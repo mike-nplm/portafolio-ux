@@ -80,19 +80,27 @@
 
         /* HERO SECTION */
         .hero {
-            padding: 6rem 0;
+            padding: 6rem 0 4rem;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.05fr 0.95fr;
             gap: 4rem;
             align-items: center;
         }
 
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0ea5e9;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
         .hero-content h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.05;
+            font-size: clamp(2.75rem, 6vw, 4.75rem);
+            line-height: 1.02;
             margin-bottom: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+            font-weight: 750;
+            letter-spacing: -0.055em;
             color: #0f172a;
         }
 
@@ -100,37 +108,165 @@
             font-size: clamp(1.05rem, 2vw, 1.25rem);
             color: #475569;
             margin-bottom: 2rem;
-            line-height: 1.6;
-            max-width: 640px;
+            line-height: 1.7;
+            max-width: 660px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.75rem;
         }
 
         .hero-cta {
             display: inline-block;
-            padding: 0.75rem 2rem;
+            padding: 0.85rem 1.5rem;
             background-color: #0ea5e9;
             color: white;
             text-decoration: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
+            border-radius: 0.6rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .hero-cta:hover {
             background-color: #0284c7;
+            transform: translateY(-2px);
+        }
+
+        .hero-secondary {
+            display: inline-block;
+            padding: 0.85rem 1.5rem;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 0.6rem;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-secondary:hover {
+            border-color: #0f172a;
+            transform: translateY(-2px);
+        }
+
+        .hero-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .hero-specialties span {
+            font-size: 0.85rem;
+            color: #475569;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 0.4rem 0.7rem;
+            border-radius: 999px;
         }
 
         .hero-visual {
+            position: relative;
             width: 100%;
-            min-height: 420px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            min-height: 460px;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 55%, #cffafe 100%);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #e2e8f0;
             border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+            padding: 1rem;
+        }
+
+        .hero-card.large {
+            width: 72%;
+            height: 58%;
+            left: 8%;
+            top: 12%;
+        }
+
+        .hero-card.medium {
+            width: 46%;
+            right: 6%;
+            bottom: 10%;
+        }
+
+        .hero-card.small {
+            width: 36%;
+            left: 10%;
+            bottom: 8%;
+        }
+
+        .hero-card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-card-title {
             font-size: 1rem;
-            text-align: center;
-            padding: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card-text {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .hero-chart {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            align-items: end;
+            height: 120px;
+            margin-top: 1rem;
+        }
+
+        .hero-chart span {
+            display: block;
+            background: #0ea5e9;
+            border-radius: 0.35rem 0.35rem 0 0;
+        }
+
+        .hero-chart span:nth-child(1) { height: 45%; }
+        .hero-chart span:nth-child(2) { height: 70%; }
+        .hero-chart span:nth-child(3) { height: 52%; }
+        .hero-chart span:nth-child(4) { height: 86%; }
+        .hero-chart span:nth-child(5) { height: 64%; }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+            padding: 0 0 5rem;
+        }
+
+        .hero-metric {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+        }
+
+        .hero-metric strong {
+            display: block;
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-metric span {
+            font-size: 0.9rem;
+            color: #64748b;
         }
 
         /* PROJECTS INTRO */
@@ -347,6 +483,28 @@
                 min-height: 300px;
             }
 
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                padding-bottom: 4rem;
+            }
+            
+            .hero-visual {
+                min-height: 420px;
+            }
+            
+            .hero-card.large {
+                width: 82%;
+                left: 6%;
+            }
+            
+            .hero-card.medium {
+                width: 58%;
+            }
+            
+            .hero-card.small {
+                width: 48%;
+            }
+
             .projects-intro {
                 padding: 3rem 0 1rem;
             }
@@ -371,6 +529,20 @@
 
             .hero-content p {
                 font-size: 1rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-cta,
+            .hero-secondary {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-metrics {
+                grid-template-columns: 1fr;
             }
 
             .social-links {
@@ -398,19 +570,94 @@
     </header>
 
     <!-- HERO SECTION -->
-    <main>
         <section>
             <div class="container hero">
                 <div class="hero-content">
-                    <h1 data-aos="fade-up">Diseñador UX enfocado en resolver problemas reales</h1>
-                    <p data-aos="fade-up" data-aos-delay="100">
-                        Especializado en investigación de usuarios, validación y diseño de experiencias que generan impacto medible.
+                    <div class="hero-eyebrow" data-aos="fade-up">
+                        UX / Product Designer · Fintech · IA · B2B SaaS
+                    </div>
+        
+                    <h1 data-aos="fade-up" data-aos-delay="100">
+                        Diseño productos digitales complejos que las personas realmente pueden usar.
+                    </h1>
+        
+                    <p data-aos="fade-up" data-aos-delay="200">
+                        Soy UX Designer especializado en plataformas financieras, inteligencia artificial, dashboards y herramientas B2B. Transformo procesos complejos en experiencias claras, usables y enfocadas en resultados de negocio.
                     </p>
-                    <a href="#work" class="hero-cta" data-aos="fade-up" data-aos-delay="200">Ver mi trabajo</a>
+        
+                    <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#work" class="hero-cta">Explorar casos de estudio</a>
+                        <a href="cv-miguel-zuniga.pdf" class="hero-secondary" target="_blank">Descargar CV</a>
+                    </div>
+        
+                    <div class="hero-specialties" data-aos="fade-up" data-aos-delay="400">
+                        <span>UX Strategy</span>
+                        <span>Research</span>
+                        <span>AI Products</span>
+                        <span>Fintech</span>
+                        <span>Dashboards</span>
+                        <span>Design Systems</span>
+                    </div>
                 </div>
-
-                <div class="hero-visual" data-aos="zoom-in" data-aos-delay="300">
-                    Espacio para imagen de portada
+        
+                <div class="hero-visual" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="hero-card large">
+                        <div class="hero-card-label">Dashboard UX</div>
+                        <div class="hero-card-title">Marriott · Business Intelligence</div>
+                        <div class="hero-card-text">KPIs, filtros, análisis comercial y visualización de datos.</div>
+        
+                        <div class="hero-chart">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+        
+                    <div class="hero-card medium">
+                        <div class="hero-card-label">Fintech B2B</div>
+                        <div class="hero-card-title">Sancus · Plataforma financiera</div>
+                        <div class="hero-card-text">Onboarding, KYB, cuentas, tarjetas y operación empresarial.</div>
+                    </div>
+        
+                    <div class="hero-card small">
+                        <div class="hero-card-label">AI Product</div>
+                        <div class="hero-card-title">Herramientas con IA</div>
+                        <div class="hero-card-text">Flujos complejos convertidos en experiencias simples.</div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="container hero-metrics">
+                <div class="hero-metric">
+                    <strong>4+</strong>
+                    <span>años en UX/Product</span>
+                </div>
+        
+                <div class="hero-metric">
+                    <strong>8+</strong>
+                    <span>años en diseño</span>
+                </div>
+        
+                <div class="hero-metric">
+                    <strong>B2B</strong>
+                    <span>SaaS y plataformas</span>
+                </div>
+        
+                <div class="hero-metric">
+                    <strong>Fintech</strong>
+                    <span>KYC, KYB y operación</span>
+                </div>
+        
+                <div class="hero-metric">
+                    <strong>IA</strong>
+                    <span>Productos y flujos</span>
+                </div>
+        
+                <div class="hero-metric">
+                    <strong>Data</strong>
+                    <span>Dashboards y BI</span>
                 </div>
             </div>
         </section>
