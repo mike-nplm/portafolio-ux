@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Zúñiga - UX Designer Portfolio</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            color: #0f172a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: #0ea5e9;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background-color: #0284c7;
+        }
+
+        .hero-visual {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* PROJECTS SECTION */
+        .projects-intro {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .projects-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .projects-intro p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+        }
+
+        /* PROJECTS GRID */
+        .projects {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e0f2fe, #cffafe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0369a1;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background-color: #dbeafe;
+            color: #0369a1;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background-color: #f8fafc;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #0f172a;
+        }
+
+        .about-bio p {
+            font-size: 1.05rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .skills-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            color: #0f172a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0ea5e9;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0f172a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #06b6d4;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Miguel Zúñiga</a>
+            <ul class="nav-links">
+                <li><a href="#work">Trabajos</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-aos="fade-up">Diseñador UX enfocado en resolver problemas reales</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Especializado en investigación de usuarios, validación y diseño de experiencias que generan impacto medible.</p>
+            <a href="#work" class="hero-cta" data-aos="fade-up" data-aos-delay="200">Ver mi trabajo</a>
+        </div>
+        <div class="hero-visual" data-aos="zoom-in" data-aos-delay="300">Espacio para imagen de portada</div>
+    </section>
+
+    <!-- PROJECTS INTRO -->
+    <section class="projects-intro" id="work">
+        <h2 data-aos="fade-up">Proyectos destacados</h2>
+        <p data-aos="fade-up" data-aos-delay="100">Una selección de mis mejores trabajos que demuestran mi proceso de diseño: desde investigación y validación, hasta implementación y resultados.</p>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section class="projects">
+        <div class="project-grid">
+            <!-- PROYECTO 1 -->
+            <a href="proyecto-1.html" class="project-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="project-thumb">Proyecto 1</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 1</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">UX Research</span>
+                        <span class="tag">Design</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROYECTO 2 -->
+            <a href="proyecto-2.html" class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-thumb">Proyecto 2</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 2</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">Wireframing</span>
+                        <span class="tag">Validation</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROYECTO 3 -->
+            <a href="proyecto-3.html" class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-thumb">Proyecto 3</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 3</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">Prototype</span>
+                        <span class="tag">Testing</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROYECTO 4 -->
+            <a href="proyecto-4.html" class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="project-thumb">Proyecto 4</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 4</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Design</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROYECTO 5 -->
+            <a href="proyecto-5.html" class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="project-thumb">Proyecto 5</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 5</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">Validation</span>
+                        <span class="tag">Results</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROYECTO 6 -->
+            <a href="proyecto-6.html" class="project-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="project-thumb">Proyecto 6</div>
+                <div class="project-info">
+                    <h3>Nombre del Proyecto 6</h3>
+                    <p>Breve descripción del reto y solución aplicada en una línea.</p>
+                    <div class="project-tags">
+                        <span class="tag">Design</span>
+                        <span class="tag">Implementation</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <h2 data-aos="fade-up">Sobre mí</h2>
+        
+        <div class="about-bio">
+            <p data-aos="fade-up" data-aos-delay="100">Primer párrafo sobre ti. Cuéntame tu trayectoria profesional, qué te apasiona del diseño UX, y por qué te enfocas en resolver problemas de usuarios. Este párrafo establece tu credibilidad y humaniza tu perfil para los reclutadores.</p>
+            
+            <p data-aos="fade-up" data-aos-delay="200">Segundo párrafo. Aquí puedes hablar sobre tu filosofía de diseño, qué te diferencia de otros diseñadores, y qué buscas en tus proyectos. Puedes mencionar tu formación, años de experiencia, o cualquier detalle relevante.</p>
+        </div>
+
+        <h3 class="skills-section" data-aos="fade-up">Skills y Competencias</h3>
+
+        <div class="skills-grid">
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                <h4>Research & Strategy</h4>
+                <ul>
+                    <li>User Research</li>
+                    <li>User Testing</li>
+                    <li>Competitive Analysis</li>
+                    <li>Information Architecture</li>
+                </ul>
+            </div>
+
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                <h4>Design & Prototyping</h4>
+                <ul>
+                    <li>Wireframing</li>
+                    <li>High-fidelity Mockups</li>
+                    <li>Interactive Prototypes</li>
+                    <li>Design Systems</li>
+                </ul>
+            </div>
+
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                <h4>Tools</h4>
+                <ul>
+                    <li>Figma</li>
+                    <li>Framer</li>
+                    <li>Protopie</li>
+                    <li>Google Analytics</li>
+                </ul>
+            </div>
+
+            <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                <h4>Soft Skills</h4>
+                <ul>
+                    <li>Strategic Thinking</li>
+                    <li>Stakeholder Communication</li>
+                    <li>Problem Solving</li>
+                    <li>Collaboration</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <p>¿Tienes un proyecto interesante? Me encantaría hablar contigo.</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a>
+                <a href="mailto:tu-email@example.com">Email</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Miguel Zúñiga. Diseño y código por mí.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
