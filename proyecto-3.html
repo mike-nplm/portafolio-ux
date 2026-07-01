@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre del Proyecto - Miguel Zúñiga UX</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            color: #0f172a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        /* PROYECTO DETAIL */
+        .project-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 2rem;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .meta-item h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: #0f172a;
+        }
+
+        .project-section {
+            margin-bottom: 3rem;
+        }
+
+        .project-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #0ea5e9;
+            display: inline-block;
+        }
+
+        .project-section p {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .project-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-section li {
+            margin-bottom: 0.75rem;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0369a1;
+            font-size: 0.9rem;
+            margin: 2rem 0;
+            border: 1px solid #bae6fd;
+        }
+
+        .insight-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.25rem;
+        }
+
+        .insight-box strong {
+            color: #0369a1;
+        }
+
+        /* NAVIGATION BUTTONS */
+        .project-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-button {
+            padding: 1rem;
+            text-decoration: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: #0f172a;
+        }
+
+        .nav-button:hover {
+            background-color: #f8fafc;
+            border-color: #0ea5e9;
+        }
+
+        .nav-button .label {
+            font-size: 0.85rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-button .title {
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 500;
+        }
+
+        .nav-button.prev .label:before {
+            content: "← ";
+        }
+
+        .nav-button.next .label:after {
+            content: " →";
+        }
+
+        .nav-home {
+            grid-column: 1 / -1;
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #0ea5e9;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-home:hover {
+            background-color: #0284c7;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0f172a;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #06b6d4;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .project-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-nav {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Miguel Zúñiga</a>
+            <ul class="nav-links">
+                <li><a href="index.html#work">Trabajos</a></li>
+                <li><a href="index.html#about">Sobre mí</a></li>
+                <li><a href="index.html#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PROYECTO CONTENT -->
+    <div class="project-container">
+        <div class="project-header">
+            <h1 data-aos="fade-up">Nombre del Proyecto 1</h1>
+            <div class="project-meta">
+                <div class="meta-item" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Mi rol</h4>
+                    <p>UX Designer / Researcher</p>
+                </div>
+                <div class="meta-item" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Duración</h4>
+                    <p>X meses</p>
+                </div>
+                <div class="meta-item" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Equipo</h4>
+                    <p>Diseño, Desarrollo, Product</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: EL PROBLEMA -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>El Problema</h2>
+            <p>Descripción del problema o desafío identificado. Explica el contexto, por qué es importante y qué impacto tiene para los usuarios o el negocio.</p>
+            <p>Puedes incluir estadísticas, datos de investigación inicial, o problemas observados que fueron el punto de partida de tu trabajo.</p>
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Problema / Contexto]</div>
+
+        <!-- SECCIÓN: INVESTIGACIÓN -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Investigación y Discovery</h2>
+            <p>Describe tu proceso de investigación. ¿Qué métodos usaste? ¿A cuántos usuarios entrevistaste? ¿Qué técnicas de investigación aplicaste?</p>
+            <ul>
+                <li><strong>Método 1:</strong> Descripción de lo que hiciste y qué encontraste</li>
+                <li><strong>Método 2:</strong> Descrición de lo que hiciste y qué encontraste</li>
+                <li><strong>Método 3:</strong> Descripción de lo que hiciste y qué encontraste</li>
+            </ul>
+        </div>
+
+        <div class="insight-box" data-aos="fade-up">
+            <strong>Insight clave:</strong> Escribe aquí el insight más importante de tu research que condujo a la solución.
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Research / Entrevistas / Datos / User Persona]</div>
+
+        <!-- SECCIÓN: IDEACIÓN -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Ideación y Concepto</h2>
+            <p>Explica cómo pasaste de los insights a soluciones. ¿Qué opciones exploraste? ¿Cómo priorizaste las ideas? ¿Qué criterios usaste?</p>
+            <p>Aquí puedes describir brainstormings, stakeholder workshops, o el proceso creativo que te llevó a la solución final.</p>
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Sketches / Ideation / Concept Art]</div>
+
+        <!-- SECCIÓN: WIREFRAMES Y PROTOTIPO -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Wireframes y Prototipo</h2>
+            <p>Muestra cómo evolucionó tu diseño desde wireframes hasta prototipo. Explica las decisiones de diseño clave y por qué las tomaste.</p>
+            <p>Puedes incluir iteraciones, comparaciones de opciones, y las razones detrás de cada decisión visual o de estructura.</p>
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Wireframes / Low-fidelity]</div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Prototipo / Mockups / High-fidelity]</div>
+
+        <!-- SECCIÓN: VALIDACIÓN -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Validación y Testing</h2>
+            <p>¿Cómo validaste tu solución con usuarios reales? Describe el tipo de testing que realizaste: usability testing, A/B testing, playtesting, etc.</p>
+            <p>Incluye información sobre: número de participantes, metodología, principales hallazgos, y cómo iteraste en base al feedback.</p>
+        </div>
+
+        <div class="insight-box" data-aos="fade-up">
+            <strong>Resultado de validación:</strong> % de usuarios completaron la tarea correctamente, con un tiempo promedio de X segundos, y satisfacción de X/10.
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Testing / Sesión de usuarios / Heatmaps / Métricas]</div>
+
+        <!-- SECCIÓN: RESULTADOS -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Resultados e Impacto</h2>
+            <p>¿Cuál fue el impacto de tu diseño? Sé específico con métricas medibles si es posible.</p>
+            <ul>
+                <li><strong>Métrica 1:</strong> X% mejora en conversión (o tasa de completamiento, eficiencia, etc.)</li>
+                <li><strong>Métrica 2:</strong> X% reducción en errores de usuario</li>
+                <li><strong>Métrica 3:</strong> X% aumento en satisfacción del usuario (NPS, CSAT, SUS score)</li>
+                <li><strong>Métrica 4:</strong> Ahorro de tiempo/recursos o impacto comercial</li>
+            </ul>
+        </div>
+
+        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Resultados / Producto final / Implementación]</div>
+
+        <!-- SECCIÓN: LEARNINGS -->
+        <div class="project-section" data-aos="fade-up">
+            <h2>Learnings y Reflexión</h2>
+            <p>¿Qué aprendiste de este proyecto? ¿Qué harías diferente si lo repitieras? ¿Cómo aplicarías estos aprendizajes a futuros proyectos?</p>
+            <p>Esta sección muestra que reflexionas sobre tu trabajo y que buscas aprender y mejorar constantemente. Es muy valiosa para reclutadores.</p>
+        </div>
+
+        <!-- NAVEGACIÓN ENTRE PROYECTOS -->
+        <div class="project-nav">
+            <!-- Cambiar proyecto-0.html por el anterior y números según corresponda -->
+            <a href="proyecto-0.html" class="nav-button prev" data-aos="fade-up" data-aos-delay="100">
+                <div class="label">Proyecto Anterior</div>
+                <div class="title">Nombre del Proyecto Anterior</div>
+            </a>
+
+            <!-- Cambiar proyecto-2.html por el siguiente y números según corresponda -->
+            <a href="proyecto-2.html" class="nav-button next" data-aos="fade-up" data-aos-delay="200">
+                <div class="label">Siguiente Proyecto</div>
+                <div class="title">Nombre del Proyecto Siguiente</div>
+            </a>
+        </div>
+
+        <a href="index.html" class="nav-home" data-aos="fade-up">← Volver al Home</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <p>¿Tienes un proyecto interesante? Me encantaría hablar contigo.</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a>
+                <a href="mailto:tu-email@example.com">Email</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Miguel Zúñiga. Diseño y código por mí.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
