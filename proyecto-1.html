@@ -3,47 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nombre del Proyecto - Miguel Zúñiga UX</title>
+    <title>Sancus · Plataforma financiera B2B - Mike Zúñiga</title>
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --container-width: 1360px;
+            --container-padding: clamp(24px, 4vw, 56px);
+            --content-width: 920px;
+
+            --bg: #ffffff;
+            --surface: #fafafa;
+            --text: #111827;
+            --text-light: #6b7280;
+            --blue: #3e6c93;
+            --orange: #e75a22;
+            --border: #e5e7eb;
+
+            --radius: 12px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background-color: #ffffff;
-            color: #0f172a;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
         }
 
-        /* HEADER & NAV */
+        .container {
+            width: min(100% - (var(--container-padding) * 2), var(--container-width));
+            margin-inline: auto;
+        }
+
+        .content-container {
+            width: min(100% - (var(--container-padding) * 2), var(--content-width));
+            margin-inline: auto;
+        }
+
         header {
             position: sticky;
             top: 0;
+            z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e2e8f0;
-            z-index: 1000;
+            border-bottom: 1px solid var(--border);
         }
 
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
+            padding: 1.35rem 0;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
-            color: #0f172a;
+            color: var(--text);
             text-decoration: none;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
         }
 
         .nav-links {
@@ -53,193 +85,281 @@
         }
 
         .nav-links a {
+            position: relative;
+            color: var(--text-light);
             text-decoration: none;
-            color: #475569;
             font-size: 0.95rem;
-            transition: color 0.3s ease;
+            transition: color 0.25s ease;
         }
 
         .nav-links a:hover {
-            color: #0f172a;
+            color: var(--text);
         }
 
-        /* PROYECTO DETAIL */
-        .project-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.25s ease;
         }
 
-        .project-header {
-            margin-bottom: 3rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 2rem;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        .project-header h1 {
-            font-size: 2.5rem;
+        .project-hero {
+            padding: 6.5rem 0 4rem;
+        }
+
+        .section-label {
+            color: var(--blue);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .project-hero h1 {
+            max-width: 980px;
+            font-size: clamp(2.75rem, 6vw, 5rem);
+            line-height: 1.02;
+            letter-spacing: -0.06em;
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            color: #0f172a;
+            color: var(--text);
+        }
+
+        .project-hero p {
+            max-width: 760px;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-light);
+            line-height: 1.75;
+            margin-bottom: 2rem;
         }
 
         .project-meta {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding-top: 2rem;
+        }
+
+        .meta-item {
+            border-top: 1px solid var(--orange);
+            padding-top: 1rem;
         }
 
         .meta-item h4 {
-            font-size: 0.85rem;
+            color: var(--blue);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            color: #64748b;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.14em;
+            font-weight: 800;
+            margin-bottom: 0.45rem;
         }
 
         .meta-item p {
-            font-size: 1rem;
-            color: #0f172a;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+
+        .project-cover {
+            margin: 0 auto 5rem;
+            min-height: 460px;
+            border-radius: 1.25rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .project-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .project-section h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            color: #0f172a;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #0ea5e9;
+            position: relative;
             display: inline-block;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+        }
+
+        .project-section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -12px;
+            width: 48px;
+            height: 1px;
+            background: var(--orange);
         }
 
         .project-section p {
-            font-size: 1rem;
-            color: #475569;
+            font-size: 1.05rem;
+            color: var(--text-light);
             margin-bottom: 1rem;
-            line-height: 1.8;
+            line-height: 1.85;
         }
 
         .project-section ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
+            list-style: none;
+            margin-top: 1.5rem;
         }
 
         .project-section li {
+            position: relative;
+            padding-left: 1.2rem;
             margin-bottom: 0.75rem;
-            color: #475569;
+            color: var(--text-light);
             line-height: 1.8;
+        }
+
+        .project-section li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 800;
         }
 
         .project-image-placeholder {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border-radius: 0.5rem;
+            min-height: 340px;
+            background: linear-gradient(135deg, #f3f4f6, #ffffff);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0369a1;
-            font-size: 0.9rem;
-            margin: 2rem 0;
-            border: 1px solid #bae6fd;
+            color: var(--blue);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin: 2rem 0 4rem;
         }
 
         .insight-box {
-            background-color: #f0f9ff;
-            border-left: 4px solid #0ea5e9;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--orange);
+            border-radius: var(--radius);
             padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0.25rem;
+            margin: 2rem 0 3rem;
         }
 
         .insight-box strong {
-            color: #0369a1;
+            color: var(--text);
+            font-weight: 800;
         }
 
-        /* NAVIGATION BUTTONS */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .result-card {
+            border-top: 1px solid var(--orange);
+            padding-top: 1rem;
+        }
+
+        .result-card strong {
+            display: block;
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .result-card span {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
         .project-nav {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 4rem 0;
-            padding: 2rem 0;
-            border-top: 1px solid #e2e8f0;
+            gap: 1rem;
+            margin: 5rem 0 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .nav-button,
+        .nav-home {
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: white;
+            color: var(--text);
+            transition: all 0.25s ease;
         }
 
         .nav-button {
-            padding: 1rem;
-            text-decoration: none;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            color: #0f172a;
+            padding: 1.25rem;
         }
 
-        .nav-button:hover {
-            background-color: #f8fafc;
-            border-color: #0ea5e9;
+        .nav-button:hover,
+        .nav-home:hover {
+            border-color: var(--text);
+            transform: translateY(-2px);
         }
 
         .nav-button .label {
-            font-size: 0.85rem;
-            color: #64748b;
+            color: var(--blue);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            font-weight: 600;
+            letter-spacing: 0.14em;
+            font-weight: 800;
             margin-bottom: 0.5rem;
         }
 
         .nav-button .title {
-            font-size: 1rem;
-            color: #0f172a;
-            font-weight: 500;
-        }
-
-        .nav-button.prev .label:before {
-            content: "← ";
-        }
-
-        .nav-button.next .label:after {
-            content: " →";
+            font-weight: 700;
+            color: var(--text);
         }
 
         .nav-home {
-            grid-column: 1 / -1;
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.75rem 1.5rem;
-            background-color: #0ea5e9;
-            color: white;
-            text-decoration: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 1.75rem;
+            margin-top: 1rem;
+            font-weight: 600;
         }
 
-        .nav-home:hover {
-            background-color: #0284c7;
-        }
-
-        /* FOOTER */
         footer {
-            background-color: #0f172a;
-            color: white;
-            padding: 3rem 2rem;
+            background: #ffffff;
+            color: var(--text);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
             text-align: center;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 5rem;
         }
 
         .footer-content p {
             margin-bottom: 1rem;
             font-size: 1.05rem;
+            color: var(--text-light);
         }
 
         .social-links {
@@ -250,197 +370,254 @@
         }
 
         .social-links a {
-            color: #0ea5e9;
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 700;
+            transition: color 0.25s ease;
         }
 
         .social-links a:hover {
-            color: #06b6d4;
+            color: var(--orange);
         }
 
         .footer-bottom {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid #334155;
+            border-top: 1px solid var(--border);
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: var(--text-light);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .project-container {
-                padding: 2rem 1.5rem;
+        @media (max-width: 900px) {
+            .project-meta,
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .project-header h1 {
-                font-size: 2rem;
+            .project-cover {
+                min-height: 340px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .nav-links {
+                display: none;
             }
 
-            .project-meta {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .project-hero {
+                padding: 4rem 0 3rem;
             }
 
+            .project-meta,
+            .results-grid,
             .project-nav {
                 grid-template-columns: 1fr;
+            }
+
+            .project-cover {
+                min-height: 280px;
             }
         }
     </style>
 </head>
+
 <body>
-    <!-- HEADER -->
     <header>
-        <nav>
-            <a href="index.html" class="logo">Miguel Zúñiga</a>
-            <ul class="nav-links">
-                <li><a href="index.html#work">Trabajos</a></li>
-                <li><a href="index.html#about">Sobre mí</a></li>
-                <li><a href="index.html#contact">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Mike Zúñiga</a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html#work">Trabajos</a></li>
+                    <li><a href="index.html#about">Sobre mí</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- PROYECTO CONTENT -->
-    <div class="project-container">
-        <div class="project-header">
-            <h1 data-aos="fade-up">Nombre del Proyecto 1</h1>
-            <div class="project-meta">
-                <div class="meta-item" data-aos="fade-up" data-aos-delay="100">
-                    <h4>Mi rol</h4>
-                    <p>UX Designer / Researcher</p>
+    <main>
+        <section class="project-hero">
+            <div class="container">
+                <div class="section-label" data-aos="fade-up">Caso de estudio</div>
+
+                <h1 data-aos="fade-up" data-aos-delay="100">
+                    Sancus · Plataforma financiera B2B
+                </h1>
+
+                <p data-aos="fade-up" data-aos-delay="200">
+                    Diseño de una plataforma financiera empresarial para simplificar procesos complejos como onboarding, KYB, cuentas, tarjetas, solicitudes de abono y operación administrativa.
+                </p>
+
+                <div class="project-meta">
+                    <div class="meta-item" data-aos="fade-up" data-aos-delay="100">
+                        <h4>Mi rol</h4>
+                        <p>Senior UX/UI Designer</p>
+                    </div>
+
+                    <div class="meta-item" data-aos="fade-up" data-aos-delay="200">
+                        <h4>Tipo</h4>
+                        <p>Fintech B2B / Plataforma operativa</p>
+                    </div>
+
+                    <div class="meta-item" data-aos="fade-up" data-aos-delay="300">
+                        <h4>Responsabilidades</h4>
+                        <p>Research, IA, flujos, wireframes, UI y handoff</p>
+                    </div>
+
+                    <div class="meta-item" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Contexto</h4>
+                        <p>Producto financiero en etapa de construcción</p>
+                    </div>
                 </div>
-                <div class="meta-item" data-aos="fade-up" data-aos-delay="200">
-                    <h4>Duración</h4>
-                    <p>X meses</p>
-                </div>
-                <div class="meta-item" data-aos="fade-up" data-aos-delay="300">
-                    <h4>Equipo</h4>
-                    <p>Diseño, Desarrollo, Product</p>
-                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="project-cover" data-aos="zoom-in">
+                Imagen principal del proyecto
             </div>
         </div>
 
-        <!-- SECCIÓN: EL PROBLEMA -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>El Problema</h2>
-            <p>Descripción del problema o desafío identificado. Explica el contexto, por qué es importante y qué impacto tiene para los usuarios o el negocio.</p>
-            <p>Puedes incluir estadísticas, datos de investigación inicial, o problemas observados que fueron el punto de partida de tu trabajo.</p>
-        </div>
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Contexto</h2>
+            <p>
+                Sancus es una plataforma financiera B2B pensada para empresas que necesitan administrar recursos, solicitar abonos, operar cuentas y gestionar tarjetas para sus equipos o tarjetahabientes.
+            </p>
+            <p>
+                El reto principal era traducir una operación financiera y regulatoria compleja en una experiencia clara, entendible y accionable para usuarios administrativos.
+            </p>
+        </section>
 
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Problema / Contexto]</div>
-
-        <!-- SECCIÓN: INVESTIGACIÓN -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Investigación y Discovery</h2>
-            <p>Describe tu proceso de investigación. ¿Qué métodos usaste? ¿A cuántos usuarios entrevistaste? ¿Qué técnicas de investigación aplicaste?</p>
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Problema</h2>
+            <p>
+                La experiencia debía resolver tareas críticas sin generar confusión: registro de empresa, validación documental, declaración de origen de fondos, solicitud de tarjetas y operación diaria.
+            </p>
             <ul>
-                <li><strong>Método 1:</strong> Descripción de lo que hiciste y qué encontraste</li>
-                <li><strong>Método 2:</strong> Descrición de lo que hiciste y qué encontraste</li>
-                <li><strong>Método 3:</strong> Descripción de lo que hiciste y qué encontraste</li>
+                <li>Procesos financieros difíciles de entender para usuarios no técnicos.</li>
+                <li>Necesidad de explicar requisitos legales sin saturar la interfaz.</li>
+                <li>Flujos largos con riesgo de abandono o errores de captura.</li>
+                <li>Coordinación constante entre negocio, producto y desarrollo.</li>
             </ul>
+        </section>
+
+        <div class="content-container project-image-placeholder" data-aos="zoom-in">
+            Imagen: problema / flujo original
         </div>
 
-        <div class="insight-box" data-aos="fade-up">
-            <strong>Insight clave:</strong> Escribe aquí el insight más importante de tu research que condujo a la solución.
-        </div>
-
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Research / Entrevistas / Datos / User Persona]</div>
-
-        <!-- SECCIÓN: IDEACIÓN -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Ideación y Concepto</h2>
-            <p>Explica cómo pasaste de los insights a soluciones. ¿Qué opciones exploraste? ¿Cómo priorizaste las ideas? ¿Qué criterios usaste?</p>
-            <p>Aquí puedes describir brainstormings, stakeholder workshops, o el proceso creativo que te llevó a la solución final.</p>
-        </div>
-
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Sketches / Ideation / Concept Art]</div>
-
-        <!-- SECCIÓN: WIREFRAMES Y PROTOTIPO -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Wireframes y Prototipo</h2>
-            <p>Muestra cómo evolucionó tu diseño desde wireframes hasta prototipo. Explica las decisiones de diseño clave y por qué las tomaste.</p>
-            <p>Puedes incluir iteraciones, comparaciones de opciones, y las razones detrás de cada decisión visual o de estructura.</p>
-        </div>
-
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Wireframes / Low-fidelity]</div>
-
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Prototipo / Mockups / High-fidelity]</div>
-
-        <!-- SECCIÓN: VALIDACIÓN -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Validación y Testing</h2>
-            <p>¿Cómo validaste tu solución con usuarios reales? Describe el tipo de testing que realizaste: usability testing, A/B testing, playtesting, etc.</p>
-            <p>Incluye información sobre: número de participantes, metodología, principales hallazgos, y cómo iteraste en base al feedback.</p>
-        </div>
-
-        <div class="insight-box" data-aos="fade-up">
-            <strong>Resultado de validación:</strong> % de usuarios completaron la tarea correctamente, con un tiempo promedio de X segundos, y satisfacción de X/10.
-        </div>
-
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Testing / Sesión de usuarios / Heatmaps / Métricas]</div>
-
-        <!-- SECCIÓN: RESULTADOS -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Resultados e Impacto</h2>
-            <p>¿Cuál fue el impacto de tu diseño? Sé específico con métricas medibles si es posible.</p>
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Proceso de diseño</h2>
+            <p>
+                Trabajé en la definición de arquitectura de información, flujos de usuario, wireframes, pantallas de alta fidelidad y documentación para desarrollo.
+            </p>
+            <p>
+                El enfoque fue reducir ambigüedad, ordenar la información por prioridad y separar claramente las acciones principales de las secundarias.
+            </p>
             <ul>
-                <li><strong>Métrica 1:</strong> X% mejora en conversión (o tasa de completamiento, eficiencia, etc.)</li>
-                <li><strong>Métrica 2:</strong> X% reducción en errores de usuario</li>
-                <li><strong>Métrica 3:</strong> X% aumento en satisfacción del usuario (NPS, CSAT, SUS score)</li>
-                <li><strong>Métrica 4:</strong> Ahorro de tiempo/recursos o impacto comercial</li>
+                <li>Mapeo de flujos de onboarding y operación.</li>
+                <li>Definición de estados, requisitos y jerarquía de información.</li>
+                <li>Diseño de pantallas para plataforma operativa.</li>
+                <li>Handoff con notas funcionales para desarrollo.</li>
             </ul>
+        </section>
+
+        <div class="content-container insight-box" data-aos="fade-up">
+            <strong>Decisión clave:</strong> priorizar acciones como solicitud de abono, solicitud de tarjetas y dispersión, evitando que el usuario tuviera que interpretar conceptos financieros complejos antes de actuar.
         </div>
 
-        <div class="project-image-placeholder" data-aos="zoom-in">[Imagen: Resultados / Producto final / Implementación]</div>
-
-        <!-- SECCIÓN: LEARNINGS -->
-        <div class="project-section" data-aos="fade-up">
-            <h2>Learnings y Reflexión</h2>
-            <p>¿Qué aprendiste de este proyecto? ¿Qué harías diferente si lo repitieras? ¿Cómo aplicarías estos aprendizajes a futuros proyectos?</p>
-            <p>Esta sección muestra que reflexionas sobre tu trabajo y que buscas aprender y mejorar constantemente. Es muy valiosa para reclutadores.</p>
+        <div class="content-container project-image-placeholder" data-aos="zoom-in">
+            Imagen: arquitectura / wireframes
         </div>
 
-        <!-- NAVEGACIÓN ENTRE PROYECTOS -->
-        <div class="project-nav">
-            <!-- Cambiar proyecto-0.html por el anterior y números según corresponda -->
-            <a href="proyecto-0.html" class="nav-button prev" data-aos="fade-up" data-aos-delay="100">
-                <div class="label">Proyecto Anterior</div>
-                <div class="title">Nombre del Proyecto Anterior</div>
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Solución</h2>
+            <p>
+                La solución se estructuró como una plataforma modular con flujos separados para onboarding, perfil empresarial, solicitudes, operación y consulta de estados de cuenta.
+            </p>
+            <p>
+                Se usó una jerarquía visual clara para que los usuarios pudieran identificar rápidamente qué información debían completar, qué acciones estaban disponibles y qué pasos seguían.
+            </p>
+        </section>
+
+        <div class="content-container project-image-placeholder" data-aos="zoom-in">
+            Imagen: UI final / plataforma
+        </div>
+
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Impacto</h2>
+            <p>
+                Este proyecto ayudó a convertir una operación financiera compleja en una experiencia más clara, documentada y preparada para implementación.
+            </p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <strong>B2B</strong>
+                    <span>Flujos para operación empresarial</span>
+                </div>
+
+                <div class="result-card">
+                    <strong>KYB</strong>
+                    <span>Validación y documentación de empresas</span>
+                </div>
+
+                <div class="result-card">
+                    <strong>UX</strong>
+                    <span>Reducción de complejidad operativa</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-container project-section" data-aos="fade-up">
+            <h2>Aprendizajes</h2>
+            <p>
+                En productos financieros B2B, el diseño no sólo debe verse claro: también debe ayudar a ordenar decisiones de negocio, restricciones legales y necesidades operativas.
+            </p>
+            <p>
+                Documentar supuestos, estados y decisiones de diseño fue clave para mantener alineados a los equipos y reducir ambigüedad durante la implementación.
+            </p>
+        </section>
+
+        <div class="content-container project-nav">
+            <a href="proyecto-6.html" class="nav-button">
+                <div class="label">Proyecto anterior</div>
+                <div class="title">Cuéntame · Bienestar emocional</div>
             </a>
 
-            <!-- Cambiar proyecto-2.html por el siguiente y números según corresponda -->
-            <a href="proyecto-2.html" class="nav-button next" data-aos="fade-up" data-aos-delay="200">
-                <div class="label">Siguiente Proyecto</div>
-                <div class="title">Nombre del Proyecto Siguiente</div>
+            <a href="proyecto-2.html" class="nav-button">
+                <div class="label">Siguiente proyecto</div>
+                <div class="title">Marriott · Dashboards comerciales</div>
             </a>
         </div>
 
-        <a href="index.html" class="nav-home" data-aos="fade-up">← Volver al Home</a>
-    </div>
+        <div class="content-container">
+            <a href="index.html#work" class="nav-home">← Volver a proyectos</a>
+        </div>
+    </main>
 
-    <!-- FOOTER -->
     <footer id="contact">
-        <div class="footer-content">
-            <p>¿Tienes un proyecto interesante? Me encantaría hablar contigo.</p>
-            
-            <div class="social-links">
-                <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a>
-                <a href="mailto:tu-email@example.com">Email</a>
-            </div>
+        <div class="container">
+            <div class="footer-content">
+                <p>¿Tienes un proyecto interesante? Me encantaría hablar contigo.</p>
 
-            <div class="footer-bottom">
-                <p>© 2024 Miguel Zúñiga. Diseño y código por mí.</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a>
+                    <a href="mailto:miguelz.moran@gmail.com">Email</a>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2026 Mike Zúñiga. Diseño y código por mí.</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
+            easing: "ease-in-out",
             once: true,
             offset: 100
         });
