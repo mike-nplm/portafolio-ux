@@ -252,7 +252,12 @@
             font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin: 2rem 0 4rem;
+            margin:3rem auto 5rem;
+        }
+
+        .project-image{
+            max-width:1200px;
+            margin:4rem auto;
         }
 
         .insight-box {
@@ -297,7 +302,7 @@
         .project-nav {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 24px;
             margin: 5rem 0 2rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
@@ -315,6 +320,10 @@
 
         .nav-button {
             padding: 1.25rem;
+            min-height:88px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
         }
 
         .nav-button:hover,
@@ -345,6 +354,12 @@
             padding: 0 1.75rem;
             margin-top: 1rem;
             font-weight: 600;
+        }
+
+        .nav-home-wrapper{
+            display:flex;
+            justify-content:center;
+            margin-top:2rem;
         }
 
         footer {
@@ -502,8 +517,10 @@
             </ul>
         </section>
 
-        <div class="content-container project-image-placeholder" data-aos="zoom-in">
-            Imagen: problema / flujo original
+        <div class="container" data-aos="zoom-in">
+            <div class="project-image-placeholder">
+                Imagen: problema / flujo original
+            </div>
         </div>
 
         <section class="content-container project-section" data-aos="fade-up">
@@ -522,12 +539,16 @@
             </ul>
         </section>
 
-        <div class="content-container insight-box" data-aos="fade-up">
-            <strong>Decisión clave:</strong> priorizar acciones como solicitud de abono, solicitud de tarjetas y dispersión, evitando que el usuario tuviera que interpretar conceptos financieros complejos antes de actuar.
+        <div class="content-container">
+            <div class="insight-box" data-aos="fade-up">
+                <strong>Decisión clave:</strong> priorizar acciones como solicitud de abono, solicitud de tarjetas y dispersión, evitando que el usuario tuviera que interpretar conceptos financieros complejos antes de actuar.
+            </div>
         </div>
-
-        <div class="content-container project-image-placeholder" data-aos="zoom-in">
-            Imagen: arquitectura / wireframes
+        
+        <div class="container" data-aos="zoom-in">
+            <div class="project-image-placeholder">
+                Imagen: arquitectura / wireframes
+            </div>
         </div>
 
         <section class="content-container project-section" data-aos="fade-up">
@@ -540,8 +561,10 @@
             </p>
         </section>
 
-        <div class="content-container project-image-placeholder" data-aos="zoom-in">
-            Imagen: UI final / plataforma
+        <div class="container" data-aos="zoom-in">
+            <div class="project-image-placeholder">
+                Imagen: UI final / plataforma
+            </div>
         </div>
 
         <section class="content-container project-section" data-aos="fade-up">
@@ -578,21 +601,24 @@
             </p>
         </section>
 
-        <div class="content-container project-nav">
-            <a href="proyecto-6.html" class="nav-button">
-                <div class="label">Proyecto anterior</div>
-                <div class="title">Cuéntame · Bienestar emocional</div>
-            </a>
-
-            <a href="proyecto-2.html" class="nav-button">
-                <div class="label">Siguiente proyecto</div>
-                <div class="title">Marriott · Dashboards comerciales</div>
-            </a>
+        <div class="container">
+            <div class="project-nav">
+                <a href="proyecto-6.html" class="nav-button">
+                    <div class="label">Proyecto anterior</div>
+                    <div class="title">Cuéntame · Bienestar emocional</div>
+                </a>
+    
+                <a href="proyecto-2.html" class="nav-button">
+                    <div class="label">Siguiente proyecto</div>
+                    <div class="title">Marriott · Dashboards comerciales</div>
+                </a>
+            </div>
         </div>
 
-        <div class="content-container">
+        <div class="container nav-home-wrapper">
             <a href="index.html#work" class="nav-home">← Volver a proyectos</a>
         </div>
+        
     </main>
 
     <footer id="contact">
